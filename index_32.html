@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Thirty Jeddah restaurants and twelve late night cafes, ranked best first, with menus, locations and photos in English and Arabic.">
+<meta name="theme-color" content="#0B6A5E">
+<meta property="og:title" content="Thirty Jeddah Restaurants">
+<meta property="og:description" content="Ranked best first, with menus, locations and a night cafes section.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E">
+<title>Thirty Jeddah Restaurants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+
+<style>
+:root{
+  --ground:#F7F4EC;--surface:#FFFFFF;--surface-2:#EFEBE0;
+  --ink:#12211F;--ink-2:#3C4F4B;--ink-3:#6F817C;--line:#DCD6C7;
+  --accent:#0B6A5E;--accent-soft:#D9EAE4;
+  --sea:#1F6F8B;--sea-soft:#DCEAF0;
+  --saffron:#B4741A;--saffron-soft:#F4E6CE;
+  --art-dim:1;
+  --shadow:0 1px 2px rgba(18,33,31,.06),0 8px 24px rgba(18,33,31,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1817;--surface:#132322;--surface-2:#1B2E2C;
+    --ink:#EDE7DA;--ink-2:#B9C7C3;--ink-3:#8A9A96;--line:#26403C;
+    --accent:#5FC2AE;--accent-soft:#123A34;
+    --sea:#7FC3DC;--sea-soft:#122E3A;
+    --saffron:#E2A855;--saffron-soft:#3A2C13;
+    --art-dim:.82;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1817;--surface:#132322;--surface-2:#1B2E2C;
+  --ink:#EDE7DA;--ink-2:#B9C7C3;--ink-3:#8A9A96;--line:#26403C;
+  --accent:#5FC2AE;--accent-soft:#123A34;
+  --sea:#7FC3DC;--sea-soft:#122E3A;
+  --saffron:#E2A855;--saffron-soft:#3A2C13;
+  --art-dim:.82;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;direction:ltr;background:var(--ground);color:var(--ink);
+  font-family:"IBM Plex Sans Arabic",system-ui,"Segoe UI",sans-serif;font-size:16px;line-height:1.65;font-variant-numeric:tabular-nums}
+body.ar{direction:rtl}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+header{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(32px,5.5vw,54px);line-height:1.14;margin:0 0 14px;text-wrap:balance}
+body.ar h1{font-family:Amiri,serif;font-weight:700}
+.lede{margin:0;max-width:64ch;color:var(--ink-2);font-size:17px}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px;font-size:13px;color:var(--ink-3)}
+.meta-row b{color:var(--ink-2);font-weight:600}
+
+.controls{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0}
+.control-inner{display:flex;flex-direction:column;gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font:inherit;font-size:13.5px;font-weight:500;padding:6px 13px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--ground)}
+.chip .n{opacity:.6;font-size:12px;margin-inline-start:5px}
+.toggles{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.tog{font:inherit;font-size:13.5px;font-weight:500;padding:6px 13px;border-radius:8px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.tog[aria-pressed="true"]{background:var(--sea-soft);border-color:var(--sea);color:var(--sea)}
+.tog svg{width:15px;height:15px;fill:currentColor}
+.lang{font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent)}
+.sep{flex:1}
+select{font:inherit;font-size:13.5px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.sections{display:flex;gap:6px;background:var(--surface-2);padding:4px;border-radius:10px;align-self:flex-start}
+.sec{font:inherit;font-size:13.5px;font-weight:600;padding:6px 16px;border-radius:7px;border:0;background:transparent;color:var(--ink-3);cursor:pointer}
+.sec[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+
+.mapbox{margin:20px 0 4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mapbox>summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--ink)}
+.mapbox>summary::-webkit-details-marker{display:none}
+.mapbox>summary .caret{margin-inline-start:auto;font-size:11px;color:var(--ink-3);transition:transform .15s}
+.mapbox[open]>summary .caret{transform:rotate(180deg)}
+.map-inner{padding:0 16px 16px}
+.map-hint{margin:0 0 10px;font-size:12.5px;color:var(--ink-3)}
+.map-scroll{overflow-x:auto}
+#mapHost svg{direction:ltr;display:block;width:100%;max-width:460px;min-width:340px;height:auto;margin:0 auto;border-radius:10px}
+.pin{cursor:pointer}
+.pin circle{transition:r .12s}
+.pin:hover circle:first-of-type{r:13}
+.map-label{font-size:10.5px;fill:var(--ink-3);font-weight:600;paint-order:stroke;stroke:var(--surface-2);stroke-width:3px;stroke-linejoin:round}
+.map-num{font-size:10px;font-weight:700;fill:#fff}
+
+.count{padding:18px 0 4px;font-size:13.5px;color:var(--ink-3)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));align-items:stretch;padding:8px 0 40px}
+.card{width:100%;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+.card.sea{border-inline-start:3px solid var(--sea)}
+.card-body{padding:16px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+
+.art{position:relative;height:168px;filter:saturate(var(--art-dim)) brightness(var(--art-dim))}
+.art svg{width:100%;height:100%;display:block}
+.art .rank{position:absolute;inset-inline-end:12px;top:10px;font-family:Amiri,serif;font-size:15px;font-weight:700;
+  color:#fff;background:rgba(0,0,0,.32);border-radius:8px;padding:3px 11px;backdrop-filter:blur(3px)}
+.art .kind{position:absolute;inset-inline-start:12px;bottom:10px;font-size:11.5px;font-weight:600;
+  color:#fff;background:rgba(0,0,0,.28);border-radius:6px;padding:3px 9px;backdrop-filter:blur(3px)}
+
+.name{margin:0;font-size:19px;font-weight:600;line-height:1.3}
+.name .alt{display:block;font-size:12.5px;font-weight:400;color:var(--ink-3)}
+.tagline{font-size:12.5px;color:var(--ink-3);margin:4px 0 0}
+.dish{font-size:13.5px;color:var(--ink-2);margin:0}
+.dish b{font-weight:600;color:var(--ink)}
+
+.menu-box{background:var(--surface-2);border-radius:10px;padding:0;overflow:hidden}
+.menu-box>summary{list-style:none;cursor:pointer;padding:11px 12px;display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--ink-2)}
+.menu-box>summary::-webkit-details-marker{display:none}
+.menu-box>summary svg{width:14px;height:14px;fill:var(--ink-3)}
+.menu-box>summary .caret{margin-inline-start:auto;font-size:11px;color:var(--ink-3);transition:transform .15s}
+.menu-box[open]>summary .caret{transform:rotate(180deg)}
+.menu-inner{padding:0 12px 12px;display:flex;flex-direction:column;gap:9px}
+.menu-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.menu-list li{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--ink-2)}
+.menu-list .lead{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+.menu-list .p{font-weight:700;color:var(--ink);font-size:13.5px}
+.menu-list .p i{font-style:normal;font-weight:500;font-size:11px;color:var(--ink-3);margin-inline-start:3px}
+.menu-none{font-size:12.5px;color:var(--ink-3);margin:0}
+
+.actions{display:flex;flex-wrap:wrap;gap:7px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;text-decoration:none;
+  padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);transition:border-color .15s,color .15s}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.btn.map{background:var(--sea-soft);border-color:transparent;color:var(--sea)}
+.btn.pics{background:var(--saffron-soft);border-color:transparent;color:var(--saffron)}
+
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid var(--line);padding-top:11px;margin-top:auto}
+.badge{font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:5px}
+.badge svg{width:12px;height:12px;fill:currentColor}
+.b-sea{background:var(--sea-soft);color:var(--sea)}
+.b-fam{background:var(--saffron-soft);color:var(--saffron)}
+.b-hours{background:var(--accent-soft);color:var(--accent)}
+.rating{margin-inline-start:auto;font-size:12.5px;color:var(--ink-3)}
+.rating b{color:var(--ink);font-weight:700;font-size:14px}
+.note{font-size:12px;color:var(--ink-3);line-height:1.55;margin:0}
+
+.tips{border-top:1px solid var(--line);padding:34px 0 10px}
+.tips h2{font-family:Newsreader,Georgia,serif;font-size:27px;margin:0 0 16px;font-weight:600}
+body.ar .tips h2{font-family:Amiri,serif;font-weight:700}
+.tips ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:9px;color:var(--ink-2);font-size:14.5px;max-width:74ch}
+.tips li b{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:20px 0 46px;font-size:12.5px;color:var(--ink-3)}
+.empty{padding:40px 0;text-align:center;color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 id="h1"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="meta-row" id="meta"></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap control-inner">
+    <div class="sections" id="sections"></div>
+    <div class="chips" id="cuisineChips"></div>
+    <div class="toggles">
+      <button class="tog" id="togSea" aria-pressed="false"></button>
+      <button class="tog" id="togFam" aria-pressed="false"></button>
+      <span class="sep"></span>
+      <label for="sortSel" style="font-size:13px;color:var(--ink-3)" id="sortLbl"></label>
+      <select id="sortSel"></select>
+      <button class="lang" id="langBtn"></button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden></p>
+  <details class="mapbox" id="mapBox" open>
+    <summary><span id="mapT"></span><span class="caret">▾</span></summary>
+    <div class="map-inner">
+      <p class="map-hint" id="mapHint"></p>
+      <div class="map-scroll"><div id="mapHost"></div></div>
+    </div>
+  </details>
+  <section class="tips">
+    <h2 id="tipsH"></h2>
+    <ul id="tipsList"></ul>
+  </section>
+</main>
+
+<footer><div class="wrap" id="footText"></div></footer>
+
+<script>
+const DATA=[
+ {ar:"المراكبي",en:"Elmarakby",c:"بحري",d:"ممشى الأمير سعود الفيصل · الروضة",de:"Prince Saud Al Faisal Walk, Al Rawdah",lo:110,hi:160,rate:4.7,rc:"٣٦٩٩ مراجعة",rce:"3,699 reviews",
+  dish:"القاروص أو السنجاري المشوي على الفحم مع صلصة الثوم",dishe:"Charcoal grilled sea bass with garlic sauce",sea:0,fam:1,
+  menu:"https://qrco.de/bgXC2y",map:"https://maps.app.goo.gl/AP5ZHQ4j2H1w8FNk6",tel:"+966555291131",
+  prices:[["ناجل","Coral trout","170"],["هامور","Hammour","120"],["حريد","Parrotfish","115"],["كنعد","Kingfish","95"],["دنيس","Sea bream","85"],["بوري","Mullet","70"]],
+  note:"أعلى تقييم في القائمة كلها. مطبخ بحري مصري، والسمك يُختار بالنوع والحجم عند الطلب.",
+  notee:"The highest rated on this list. Egyptian style seafood, with the fish chosen by type and size at the counter."},
+
+ {ar:"توينا",en:"Twina",c:"بحري",d:"طريق الكورنيش · الحمراء",de:"Corniche Road, Al Hamra",lo:100,hi:150,rate:4.5,rc:"٢١١٣ مراجعة",rce:"2,113 reviews",
+  dish:"كيس الجمبري وكبسة صيدة اليوم",dishe:"Shrimp bag and catch of the day kabsa",sea:1,fam:1,
+  menu:"https://twina.sa/ar/menu",map:"https://www.google.com/maps/search/?api=1&query=Twina+Corniche+Al+Hamra+Jeddah",tel:"+966122138730",
+  prices:[["فيليه سيباس بالمشروم","Sea bass fillet with mushroom","145"],["كيس جمبري","Shrimp bag","85"],["كومبو ساندوتش جمبري مقلي","Fried shrimp sandwich combo","79"],["كبسة صيدة اليوم","Catch of the day kabsa","58"],["ساندوتش جمبري سيراتشا","Sriracha shrimp sandwich","46"]],
+  note:"أعلى تقييم مع عدد مراجعات كبير. هذا فرع الكورنيش السريع، ويختلف عن توينا بارك في أبحر.",
+  notee:"A high rating with a large review count. This is the quick Corniche branch, a different concept from Twina Park in Obhur."},
+
+ {ar:"أوت باك ستيك هاوس",en:"Outback Steakhouse",c:"ستيك",d:"ياسمين مول · حي المنار",de:"Yasmin Mall, Al Manar",lo:110,hi:160,rate:4.5,rc:"٤٦١٤ مراجعة",rce:"4,614 reviews",
+  dish:"بلومن أونيون (البصلة المتفتحة) والسلمون المشوي",dishe:"Bloomin' Onion and grilled salmon",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/abhur-aljanubiyah/45964",map:"https://maps.app.goo.gl/ky8oKKF8V8BPHPY8A",tel:"+966555014648",
+  prices:[["سلمون مشوي","Grilled salmon","133"],["تشيكن أون ذا باربي","Chicken on the Barbie","98"],["أجنحة نو رولز","No Rules wings","79"],["برجر آوت باك","Outback burger","71"],["ساندويتش دجاج مقرمش","Crispy chicken sandwich","63"]],
+  note:"أقسام عائلية وركن ألعاب أطفال في أحد الفروع.",notee:"Family sections, and a kids play area at one branch."},
+
+ {ar:"كوت انتركوت دي جدة",en:"KoT L'Entrecôte",c:"ستيك",d:"شارع حلمي كتبي · الزهراء",de:"Helmi Kutbi Street, Al Zahra",lo:124,hi:160,rate:4.5,rc:"٢٥٥٠ مراجعة",rce:"2,550 reviews",
+  dish:"انتركوت بصوص كافيه دي باري وكريم بروليه",dishe:"Entrecôte with Café de Paris sauce and crème brûlée",sea:0,fam:1,
+  menu:"https://kot-sa.com/",map:"https://www.google.com/maps/search/?api=1&query=Kot+l%27entrecote+de+Jeddah+Helmi+Kutbi+Al+Zahra",tel:"+966544611775",
+  prices:[["انتركوت ١٥٠ جم","Entrecôte 150g","124"],["انتركوت ٢٠٠ جم","Entrecôte 200g","165"],["انتركوت ٣٠٠ جم","Entrecôte 300g","254"]],
+  pnote:"الطبق يقدّم مع السلطة والخبز والبطاطس مع إعادة التعبئة والحلى.",
+  pnotee:"The dish comes with salad, bread, fries with refills and dessert.",
+  note:"قائمة ثابتة بطبق واحد بثلاثة أحجام. الحجز ضروري.",notee:"A fixed menu: one dish in three sizes. Booking is essential."},
+
+ {ar:"أوشن باسكيت",en:"Ocean Basket",c:"بحري",d:"تحلية مول · الروضة",de:"Tahlia Mall, Al Rawdah",lo:100,hi:150,rate:4.3,rc:"٣٥٤٣ مراجعة",rce:"3,543 reviews",
+  dish:"فيش آند تشيبس الشهير وأطباق المشاركة",dishe:"The famous fish and chips and sharing platters",sea:0,fam:1,
+  menu:"https://saudiarabia.oceanbasket.com/menu/main/",map:"https://www.google.com/maps/search/?api=1&query=Ocean+Basket+Tahlia+Mall+Jeddah",tel:"+966126901461",
+  prices:[["سلمون مشوي","Grilled salmon","58-95"],["شرمب تريو","Shrimp trio","85"],["فيش آند تشيبس","Fish and chips","54"],["ديناميت شرمب","Dynamite shrimp","54"],["كالاماري","Calamari","35"]],
+  note:"الأكثر أماناً للعائلات: حصص واضحة وخدمة سريعة ومنيو أطفال.",
+  notee:"The safest family pick: clear portions, quick service and a kids menu."},
+
+ {ar:"ذا تشيزكيك فاكتوري",en:"The Cheesecake Factory",c:"عالمي",d:"لي مول · التحلية",de:"Le Mall, Tahlia",lo:120,hi:170,rate:4.3,rc:"٨٠٨ مراجعات",rce:"808 reviews",
+  dish:"التشيزكيك الأصلي وفاكتوري ناتشوز",dishe:"The original cheesecake and Factory nachos",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-ar/restaurant/%D8%AC%D8%AF%D9%87/%D8%A7%D9%84%D8%A8%D9%84%D8%AF/85690",map:"https://maps.google.com/maps?cid=17824205403229457564",tel:"+966122617001",
+  prices:[["فيتوتشيني ألفريدو بالدجاج","Chicken fettuccine Alfredo","131"],["فيش آند تشيبس","Fish and chips","107"],["بافلو وينجز","Buffalo wings","81"],["فاكتوري ناتشوز","Factory nachos","80"],["أولد فاشند برجر","Old fashioned burger","77"]],
+  note:"الحصص ضخمة ومبنية على المشاركة، وقائمة الحلويات هي نجم المكان.",
+  notee:"Portions are huge and built for sharing, and the dessert counter is the star."},
+
+ {ar:"تكساس رودهاوس",en:"Texas Roadhouse",c:"ستيك",d:"لي مول · التحلية (وفرع رد سي مول)",de:"Le Mall, Tahlia (and Red Sea Mall)",lo:120,hi:160,rate:4.3,rc:"٢٩٤ مراجعة",rce:"294 reviews",
+  dish:"دالاس فيليه والسيرلوين المقطّع يدوياً",dishe:"Dallas fillet and hand cut sirloin",sea:0,fam:1,
+  menu:"https://www.texasroadhouseme.com/ar_sa/menu",map:"https://maps.google.com/maps?cid=8345748774954348814",tel:"+966122617026",
+  prices:[["دالاس فيليه","Dallas fillet","158"],["نيويورك سترب","New York strip","152"],["أضلاع ريب آي خاصة","Special rib eye ribs","138"],["ستيك سيرلوين","Sirloin steak","102"],["تشيز برجر","Cheeseburger","78"]],
+  note:"كل ستيك يقدّم مع طبقين جانبيين، والخبز الطازج يوضع على الطاولة فور الجلوس.",
+  notee:"Every steak comes with two sides, and fresh baked bread arrives at the table as you sit."},
+
+ {ar:"براسا دي برازيل",en:"Brasa de Brazil",c:"ستيك",d:"شارع الأندلس · الحمراء",de:"Al Andalus Street, Al Hamra",lo:130,hi:165,rate:4.3,rc:"٣١٢ مراجعة",rce:"312 reviews",
+  dish:"البيكانيا البرازيلية والأناناس المشوي بالقرفة",dishe:"Brazilian picanha and grilled cinnamon pineapple",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/al-bawadi/34721",map:"https://www.google.com/maps/search/?api=1&query=Brasa+de+Brazil+Al+Andalus+Road+Jeddah",tel:"+966122842345",
+  prices:[["البوفيه المفتوح ١٣ نوع","Full buffet, 13 cuts","196"],["البوفيه المفتوح ٧ أنواع","Buffet, 7 cuts","130"],["بيكانيا أنجوس ٢٠٠ جم","Angus picanha 200g","80"],["فيليه مينيون ٢٠٠ جم","Filet mignon 200g","80"],["سلطة سيزر بالدجاج والروبيان","Caesar salad with chicken and shrimp","45"]],
+  note:"المرتبة الثامنة بين أكثر من ألف مطعم في جدة. بوفيه لحوم مفتوح يُقدّم على الطاولة.",
+  notee:"Ranked eighth among more than a thousand restaurants in Jeddah. An open meat buffet carved at your table."},
+
+ {ar:"بلو أوشن",en:"Blue Ocean",c:"عالمي",d:"فقيه أكواريوم · الشاطئ",de:"Fakieh Aquarium, Ash Shati",lo:130,hi:180,rate:4.3,rc:"١١٨ مراجعة",rce:"118 reviews",
+  dish:"ديناميت شرمب، فوتشيني، سلطة سيزر",dishe:"Dynamite shrimp, fettuccine and Caesar salad",sea:1,fam:1,
+  menu:"https://blueoceandining.com/our-menu/",map:"https://maps.app.goo.gl/A4YRM5EV9YbbPVX96",tel:"+966126397462",
+  prices:[["أسياخ اللحم","Beef skewers","130"],["دجاج وجمبري كاريبي","Caribbean chicken and shrimp","114"],["تيرياكي دجاج","Teriyaki chicken","110"],["برجر البيت","House burger","83"],["بانج بانج شرمب","Bang bang shrimp","63"]],
+  note:"من أفضل الإطلالات البحرية في القائمة، وجلسات زجاجية مطلة على الماء.",
+  notee:"One of the best sea views on this list, with glass fronted seating over the water."},
+
+ {ar:"بورتوفينو",en:"Portofino",c:"إيطالي",d:"شارع الأمير سعود الفيصل · الروضة",de:"Prince Saud Al Faisal Street, Al Rawdah",lo:100,hi:150,rate:4.2,rc:"١٢٩٥ مراجعة",rce:"1,295 reviews",
+  dish:"بيتزا فرن الحطب وسلطة البوراتا المستوردة",dishe:"Wood fired pizza and imported burrata salad",sea:0,fam:1,
+  menu:"https://menuweb.menu/restaurants/jeddah-1/portofino-237",map:"https://www.google.com/maps/search/?api=1&query=Portofino+Restaurant+Prince+Saud+Al+Faisal+Ar+Rawdah+Jeddah",tel:"+966126655855",
+  prices:[["سلطة بوراتا","Burrata salad","100"],["إسكالوب ميلانيز","Escalope milanese","65"],["تورتيليني بالريكوتا","Ricotta tortellini","60"],["بيني أرابياتا","Penne arrabbiata","50"],["بيتزا مارغريتا","Margherita pizza","40"]],
+  note:"أقدم الإيطاليين في جدة وأقواهم من حيث عدد المراجعات. قسم عائلات مستقل.",
+  notee:"The oldest Italian in Jeddah and the strongest by review count, with a separate family section."},
+
+ {ar:"خيال",en:"Khayal",c:"تركي",d:"طريق الأمير سلطان · دوار التاريخ",de:"Prince Sultan Road, History Roundabout",lo:100,hi:140,rate:4.2,rc:"٤٤٩ مراجعة",rce:"449 reviews",
+  dish:"مشكل خيال والمشاوي التركية",dishe:"The Khayal mixed grill",sea:0,fam:1,
+  menu:"https://www.khayalrest.com/menus",map:"https://maps.app.goo.gl/B2UbivH4WUpAbZf67",tel:"920002223",
+  prices:[["مشكل خيال","Khayal mix","119"],["مشكل مشاوي","Mixed grill","91"],["مشكل دجاج","Chicken mix","83"],["ريش غنم","Lamb chops","71"],["فتوش","Fattoush","17"]],
+  note:"المرتبة ١٤ بين أكثر من ألف مطعم في جدة، وأقوى خيار تركي بعدد مراجعات معتبر.",
+  notee:"Ranked 14th among more than a thousand restaurants, and the strongest Turkish option by review count."},
+
+ {ar:"بياتو",en:"Piatto",c:"إيطالي",d:"إيتوال سنتر · الزهراء",de:"Etoile Center, Al Zahra",lo:100,hi:140,rate:4.1,rc:"٤٠٤ مراجعات",rce:"404 reviews",
+  dish:"ترافل كريم شرمب لينجويني وستيك بيتزايولا",dishe:"Truffle cream shrimp linguine and steak pizzaiola",sea:0,fam:1,
+  menu:"https://digitall.menu/qr-piatto",map:"https://maps.app.goo.gl/ETVPz3JzyzhE9LNC6",tel:"+966553946738",
+  prices:[["ترافل كريم شرمب لينجويني","Truffle cream shrimp linguine","89"],["بيتزا بيبروني","Pepperoni pizza","71"],["سباغيتي بولونيز","Spaghetti bolognese","69"],["بيتزا مارغريتا","Margherita pizza","64"],["تيراميسو","Tiramisu","45"]],
+  note:"حائز مرتين على جائزة التميز السياحي السعودي، وله خمسة فروع في جدة.",
+  notee:"A two time winner of the Saudi Excellence in Tourism award, with five branches in Jeddah."},
+
+ {ar:"جواكا",en:"GUAKA",c:"مكسيكي",d:"طريق الأمير سلطان · الروضة",de:"Prince Sultan Road, Al Rawdah",lo:100,hi:140,rate:4.1,rc:"أكثر من ٩٧٠ مراجعة",rce:"more than 970 reviews",
+  dish:"بيريا تاكو وجواكامولي طازج",dishe:"Birria tacos and fresh guacamole",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-ar/restaurant/%D8%AC%D8%AF%D9%87/%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D9%87-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/134546",
+  map:"https://www.google.com/maps/search/?api=1&query=21.5765,39.1779",tel:"",
+  prices:[["جواكا بوريتو","Guaka burrito","64"],["مكسيكان فرايز","Mexican fries","54"],["بيريا تاكو","Birria taco","40"],["جواكامولي كلاسيك","Classic guacamole","34"],["تاكو دجاج","Chicken taco","20"]],
+  note:"الخيار المكسيكي الوحيد في القائمة، وتشكيلة التاكو عندهم واسعة.",
+  notee:"The only Mexican pick here, with a wide taco selection."},
+
+ {ar:"إيسابيلاز",en:"Isabella's",c:"إيطالي",d:"شارع خليل بيك العجان · الزهراء",de:"Khalil Bek Al Ajjan Street, Al Zahra",lo:95,hi:140,rate:4.6,rc:"تقييم هنقرستيشن",rce:"HungerStation rating",
+  dish:"بيتزا على الحطب، فيتوتشيني الترفل، كاربونارا",dishe:"Wood fired pizza, truffle fettuccine and carbonara",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/al-salamah/5722",map:"https://www.google.com/maps/search/?api=1&query=Isabella%27s+Italian+Restaurant+Al+Zahra+Jeddah",tel:"+966504378700",
+  prices:[["ستيك تندرلوين","Tenderloin steak","191"],["لازانيا","Lasagna","81"],["سباغيتي كاربونارا","Spaghetti carbonara","71"],["بيتزا مارغريتا","Margherita pizza","58"],["تيراميسو","Tiramisu","47"]],
+  note:"التقييم من منصة التوصيل وليس من تريب أدفايزر، لذلك جاء بعد المطاعم ذات المراجعات الموثّقة.",
+  notee:"The rating comes from a delivery platform rather than Tripadvisor, so it sits below places with verified reviews."},
+
+ {ar:"بلاك تاب",en:"Black Tap",c:"برجر",d:"لا باز بلازا · السلامة",de:"La Paz Plaza, Al Salamah",lo:110,hi:160,rate:4.5,rc:"تقييم هنقرستيشن",rce:"HungerStation rating",
+  dish:"ستيك هاوس برجر مع الكريزي شيك",dishe:"The Steakhouse burger with a CrazyShake",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-ar/restaurant/%D8%AC%D8%AF%D9%87/%D8%A7%D9%84%D9%86%D9%87%D8%B6%D9%87/152232",
+  map:"https://www.google.com/maps/search/?api=1&query=Black+Tap+La+Paz+Plaza+Jeddah",tel:"920024304",
+  prices:[["ستيك هاوس برجر","Steakhouse burger","93"],["فيلي تشيز ستيك برجر","Philly cheesesteak burger","93"],["أولد فاشن برجر","Old fashion burger","81"],["أول أمريكان برجر","All American burger","74"],["ميلك شيك كلاسيك","Classic milkshake","37"]],
+  note:"يوجد منيو أطفال، والكريزي شيك المزيّن هو نجم المكان.",
+  notee:"There is a kids menu, and the decorated CrazyShake is the star of the place."},
+
+ {ar:"شرمب أناتومي",en:"Shrimp Anatomy",c:"بحري",d:"شارع صاري · الخالدية",de:"Sari Street, Al Khalidiyah",lo:90,hi:150,rate:4.2,rc:"٥٤ مراجعة",rce:"54 reviews",
+  dish:"كيس الروبيان بصوص زبدة الثوم أو الكاجن",dishe:"Shrimp bag in garlic butter or cajun sauce",sea:0,fam:1,
+  menu:"https://thechefz.co/ar/jeddah/shrimp-anatomy-%D8%B4%D8%B1%D9%85%D8%A8-%D8%A7%D9%86%D8%A7%D8%AA%D9%88%D9%85%D9%8A-789852/",
+  map:"https://www.google.com/maps/search/?api=1&query=Shrimp+Anatomy+Sari+Street+Al+Khalidiyah+Jeddah",tel:"920033932",
+  prices:[["لوبستر","Lobster","150"],["كيس روبيان","Shrimp bag","72"],["كيس كراب","Crab bag","68"],["سلة روبيان مقلي","Fried shrimp basket","45"],["شوربة شرمب","Shrimp soup","22"]],
+  note:"يوجد منيو أطفال. تجربة سي فود بويل بأيدي مكشوفة على الطاولة.",
+  notee:"There is a kids menu. A hands on seafood boil served straight onto the table."},
+
+ {ar:"نينو",en:"Nino",c:"إيطالي",d:"ممشى فلسطين · الحمراء",de:"Falastin Walk, Al Hamra",lo:90,hi:130,rate:4.2,rc:"٥٣ مراجعة",rce:"53 reviews",
+  dish:"باستا آلا نينو وريزوتو الدجاج بالليمون",dishe:"Pasta alla Nino and lemon chicken risotto",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/al-hamra/12260",map:"https://www.google.com/maps/search/?api=1&query=Nino+Restaurant+Falastin+Street+Al+Hamra+Jeddah",tel:"+966122613333",
+  prices:[["تالياتا ستيك","Tagliata steak","119"],["بيتزا مارغريتا","Margherita pizza","61"],["باستا آلا نينو","Pasta alla Nino","49"],["تيراميسو","Tiramisu","49"],["سلطة سيزر","Caesar salad","46"]],
+  note:"إيطالي هادئ على ممشى فلسطين، وخيارات نباتية وكراسي أطفال.",
+  notee:"A quiet Italian on Falastin Walk, with vegetarian options and high chairs."},
+
+ {ar:"الصعيدي للأسماك",en:"Saedi Fish",c:"بحري",d:"طريق الكورنيش · الحمراء",de:"Corniche Road, Al Hamra",lo:95,hi:135,rate:4.1,rc:"٤٦ مراجعة",rce:"46 reviews",
+  dish:"الحريد المشوي، الجمبري بالبشاميل، أرز صيادية",dishe:"Grilled parrotfish, shrimp béchamel and sayadiah rice",sea:1,fam:1,
+  menu:"https://hungerstation.com/sa-ar/restaurant/%D8%AC%D8%AF%D9%87/%D8%A7%D9%84%D8%B4%D8%A7%D8%B7%D8%A6/109660",map:"https://maps.app.goo.gl/5WStpJyw7bMz1hPT6",tel:"+966558400013",
+  prices:[["سمك فارسي ٨٠٠ جم","Persian fish 800g","88"],["سمك شعور ٦٠٠ جم","Emperor fish 600g","62"],["لينغويني بحري","Seafood linguine","55"],["جمبري كبير ٢٥٠ جم","Large shrimp 250g","44"],["أرز صيادية","Sayadiah rice","15"]],
+  note:"مقابل نافورة الملك فهد، والسمك يُختار طازجاً ويُشوى على الطلب.",
+  notee:"Opposite King Fahd Fountain, with the fish picked fresh and grilled to order."},
+
+ {ar:"ليلى",en:"Leila",c:"شامي",d:"مركز يو شيب · شارع الأمير سعود الفيصل",de:"U Shape Center, Prince Saud Al Faisal Street",lo:110,hi:150,rate:4.0,rc:"٧٣ مراجعة",rce:"73 reviews",
+  dish:"المشاوي المشكلة والمقبلات اللبنانية",dishe:"Mixed grill and Lebanese mezze",sea:0,fam:1,
+  menu:"https://www.leilarestaurant.com/jeddah",map:"https://www.google.com/maps/search/?api=1&query=Leila+Restaurant+U+Shape+Prince+Saud+Al+Faisal+Jeddah",tel:"+966500751000",
+  prices:[["مشاوي مشكلة","Mixed grill","74"],["شاورما دجاج","Chicken shawarma","70"],["رول جبنة","Cheese rolls","37"],["تبولة","Tabbouleh","29"],["حمص","Hummus","28"]],
+  note:"قسم عائلي ومنيو أطفال، ويقدّم فطور وغداء وعشاء.",
+  notee:"Family section and a kids menu, serving breakfast, lunch and dinner."},
+
+ {ar:"الدوار المصري",en:"Al Dawar Al Masry",c:"مصري",d:"طريق الأمير محمد بن عبدالعزيز · الشاطئ",de:"Prince Mohammed bin Abdulaziz Road, Ash Shati",lo:100,hi:145,rate:4.0,rc:"٦٣ مراجعة",rce:"63 reviews",
+  dish:"الحمام المحشي والملوخية",dishe:"Stuffed pigeon and molokhia",sea:0,fam:1,
+  menu:"https://jeddahrestaurants.com/al-dawar-al-masry-restaurant/",map:"https://www.google.com/maps/search/?api=1&query=Al+Dawar+Al+Masry+Jeddah",tel:"+966122889934",
+  prices:[["ضلوع غنم","Lamb ribs","78"],["شيش طاووق","Shish tawook","42"],["فراخ مشوية","Grilled chicken","42"],["ملوخية","Molokhia","19"],["بطاطس محمرة","Fried potatoes","14"]],
+  note:"أفضل تقييم بين المطاعم المصرية في القائمة، وله فرع في رد سي مول.",
+  notee:"The best rated Egyptian on this list, with a branch at Red Sea Mall."},
+
+ {ar:"دار زيد",en:"Maison De Zaid",c:"عالمي",d:"شارع عبدالمقصود خوجة · الروضة",de:"Abdul Maqsood Khoja Street, Al Rawdah",lo:110,hi:150,rate:4.0,rc:"٤٣ مراجعة",rce:"43 reviews",
+  dish:"بيتزا البوراتا ومقبل الروبيان",dishe:"Burrata pizza and the shrimp starter",sea:0,fam:1,
+  menu:"https://travelerindex.net/2024/01/09/dar-zaid-restaurant-jeddah/",map:"https://maps.app.goo.gl/WmJQCyhvTcAHPCyKA",tel:"+966543745284",
+  prices:[["بيتزا بوراتا","Burrata pizza","92"],["مقبل روبيان","Shrimp starter","78"],["بيتزا مارغريتا","Margherita pizza","58"],["سلطة سيزر","Caesar salad","52"],["شوربة دجاج بالطماطم","Chicken tomato soup","48"]],
+  note:"أجواء راقية هادئة مع قسم عائلي وكراسي أطفال ومدخل لذوي الاحتياجات.",
+  notee:"A quiet upscale setting with a family section, high chairs and accessible entry."},
+
+ {ar:"ميديم ويل",en:"Medium Well",c:"برجر",d:"بابليون بلازا · طريق صاري",de:"Babylon Plaza, Sari Road",lo:100,hi:150,rate:4.0,rc:"مراجعات قليلة",rce:"few reviews",
+  dish:"برجر الواغيو على الفحم وتندرلوين أسترالي",dishe:"Charcoal wagyu burger and Australian tenderloin",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/al-hamra/168632",map:"https://www.google.com/maps/search/?api=1&query=Medium+Well+Steak+%26+Burger+Sari+Road+Jeddah",tel:"",
+  prices:[["ستيك ساندويتش","Steak sandwich","67"],["واغيو برجر","Wagyu burger","49"],["لازانيا","Lasagna","41"],["ماك أند تشيز","Mac and cheese","38"],["ترفل فرايز","Truffle fries","32"]],
+  note:"مفهوم سعودي حديث غطّته عرب نيوز، ويفتح حتى ساعة متأخرة.",
+  notee:"A recent Saudi concept covered by Arab News, open late."},
+
+ {ar:"سرايا لطيف",en:"Saray Latif",c:"تركي",d:"مقابل مركز الجمجوم · الحمراء",de:"Opposite Jamjoom Center, Al Hamra",lo:110,hi:160,rate:4.8,rc:"مراجعات قليلة",rce:"few reviews",
+  dish:"كباب إسكندر والخبز التركي والبقلاوة",dishe:"Iskender kebab, Turkish bread and baklava",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/saraya-latif/jeddah/al-hamra/16117",map:"https://www.google.com/maps/search/?api=1&query=Saraya+Latif+Palestine+Street+Al+Hamra+Jeddah",tel:"+966126641090",
+  prices:[["كوزو بيرزولا","Kuzu pirzola","125"],["شيش فيليه","Shish fillet","102"],["طبق سرايا المشكل","Saray mixed platter","100"],["يوغورتلو كباب","Yogurtlu kebab","94"],["شيش طاووق","Shish tawook","75"]],
+  note:"التقييم مرتفع لكن عدد المراجعات صغير جداً، لذلك تأخّر ترتيبه رغم الرقم.",
+  notee:"The rating is high but the review count is very small, which is why it ranks here."},
+
+ {ar:"كرم بيروت",en:"Karam Beirut",c:"شامي",d:"البوليفارد · الشاطئ",de:"The Boulevard, Ash Shati",lo:110,hi:170,rate:3.9,rc:"٢٥ مراجعة",rce:"25 reviews",
+  dish:"كستلاتة الغنم المشوية والكنافة النابلسية",dishe:"Grilled lamb cutlets and Nabulsi knafeh",sea:0,fam:1,
+  menu:"https://thechefz.co/ar/riyadh/karam-beirut-%D9%83%D8%B1%D9%85-%D8%A8%D9%8A%D8%B1%D9%88%D8%AA-18265/",
+  map:"https://www.google.com/maps/search/?api=1&query=Karam+Beirut+Boulevard+Ash+Shati+Jeddah",tel:"+966126633444",
+  prices:[["الجمبري المشوي","Grilled shrimp","121"],["المشكل المشوي","Mixed grill","109"],["اللحم المشوي","Grilled meat","105"],["شيش طاووق","Shish tawook","87"],["الحمص التقليدي","Classic hummus","35"]],
+  pnote:"فرع البوليفارد صالة فقط، والقائمة المعروضة هي قائمة العلامة في السعودية.",
+  pnotee:"The Boulevard branch is dine in only, and the menu shown is the brand's Saudi menu.",
+  note:"المقبلات اللبنانية هي نقطة القوة، والمشاركة بين شخصين هي الطريقة المعتادة.",
+  notee:"The Lebanese mezze is the strength here, and sharing between two is the usual way."},
+
+ {ar:"أبو السيد",en:"Abou El Sid",c:"مصري",d:"شارع إسماعيل أبو داود · الأندلس",de:"Ismail Abu Daud Street, Al Andalus",lo:100,hi:160,rate:3.8,rc:"١٧ مراجعة",rce:"17 reviews",
+  dish:"الحمام المحشي والملوخية والطواجن",dishe:"Stuffed pigeon, molokhia and tagines",sea:0,fam:1,
+  menu:"https://thechefz.co/ar/jeddah/abou-el-sid-%D8%A7%D8%A8%D9%88-%D8%A7%D9%84%D8%B3%D9%8A%D8%AF-395851/",
+  map:"https://www.google.com/maps/search/?api=1&query=Abou+El+Sid+Ismail+Abu+Daud+Al+Andalus+Jeddah",tel:"+966126652525",
+  prices:[["بط مشوي","Grilled duck","88"],["كفتة لحم ضاني","Lamb kofta","63"],["حمام محشي","Stuffed pigeon","54"],["ملوخية بالدجاج","Molokhia with chicken","48"],["أم علي بالمكسرات","Om Ali with nuts","28"]],
+  note:"فرع السلسلة القاهرية الشهيرة. المراجعات منقسمة بين مشيد ومقارن بالأصل في القاهرة.",
+  notee:"A branch of the famous Cairo chain. Reviews split between admirers and those comparing it to the original."},
+
+ {ar:"كنز أبحر",en:"Kanz Obhur",c:"بحري",d:"طريق الكورنيش · أبحر الجنوبية",de:"Corniche Road, South Obhur",lo:110,hi:150,rate:3.7,rc:"٢٣ مراجعة",rce:"23 reviews",
+  dish:"المشاوي المشكلة والمأكولات البحرية المشوية",dishe:"Mixed grill and grilled seafood",sea:1,fam:1,
+  menu:"https://www.jeddahcafe.com/2021/%D9%85%D8%B7%D8%B9%D9%85-%D9%83%D9%86%D8%B2-%D8%A3%D8%A8%D8%AD%D8%B1-%D8%AC%D8%AF%D8%A9/",
+  map:"https://maps.app.goo.gl/y6h19n61aXyyspr29",tel:"+966553843234",
+  prices:[["مشاوي مشكلة","Mixed grill","72"],["فيتوتشيني دجاج","Chicken fettuccine","65"],["براونيز","Brownies","38"],["موس شوكولاتة","Chocolate mousse","35"],["تبولة","Tabbouleh","27"]],
+  note:"جلسات خارجية مباشرة على كورنيش أبحر، ومساحة واسعة للعائلات.",
+  notee:"Outdoor seating right on the Obhur corniche, with plenty of room for families."},
+
+ {ar:"المرساة للمأكولات البحرية",en:"Al Marsah Seafood",c:"بحري",d:"شارع حراء · المروة",de:"Hira Street, Al Marwah",lo:100,hi:145,rate:null,rc:"بلا تقييم موثّق",rce:"no verified rating",
+  dish:"الهامور المشوي مع الأرز الصيادي، دايناميت شرمب",dishe:"Grilled hammour with sayadiah rice and dynamite shrimp",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-ar/restaurant/%D8%AC%D8%AF%D9%87/%D8%A7%D9%84%D9%85%D8%B1%D9%88%D9%87/28724",map:"https://maps.app.goo.gl/zUaU1LqQDxSQdSuQ7",tel:"+966126556833",
+  prices:[["فيليه سلمون","Salmon fillet","93"],["هامور مشوي ٥٠٠ جم","Grilled hammour 500g","87"],["شعور مشوي ٥٠٠ جم","Grilled emperor 500g","59"],["جمبري مشوي ٢٥٠ جم","Grilled shrimp 250g","49"],["معكرونة جمبري","Shrimp pasta","32"]],
+  note:"جلسات عائلية مغلقة وأقسام VIP، والسمك يُختار بالحجم عند الطلب.",
+  notee:"Enclosed family booths and VIP rooms, with fish chosen by size when you order."},
+
+ {ar:"كرمنا",en:"Karamna",c:"شامي",d:"نادي جدة لليخوت · الكورنيش",de:"Jeddah Yacht Club, Corniche",lo:80,hi:120,rate:null,rc:"بلا تقييم موثّق",rce:"no verified rating",
+  dish:"كبسة الجمبري، مشاوي مشكلة، تبولة ومتبل",dishe:"Shrimp kabsa, mixed grill, tabbouleh and mutabbal",sea:1,fam:1,
+  menu:"https://karamnagroup.com/",map:"https://www.google.com/maps/search/?api=1&query=Karamna+Jeddah+Yacht+Club",tel:"+966533335835",
+  prices:[["كبسة جمبري","Shrimp kabsa","110"],["كبسة لحم","Meat kabsa","98"],["جمبري مشوي","Grilled shrimp","90"],["مشاوي كرمنا المشكلة","Karamna mixed grill","85"],["شيش طاووق","Shish tawook","55"]],
+  note:"جلسات على المارينا وبعضها على متن يخت، وأجواء هادئة على الماء.",
+  notee:"Tables on the marina, some of them aboard a yacht, in a calm setting on the water."},
+
+ {ar:"الودعة",en:"Al Wadaa",c:"بحري",d:"موفنبيك النورس · طريق الكورنيش",de:"Mövenpick Al Nawras, Corniche Road",lo:100,hi:150,rate:null,rc:"بلا تقييم موثّق",rce:"no verified rating",
+  dish:"بوفيه مفتوح على البحر، وباستا الجمبري وفيليه السمك",dishe:"An open buffet by the sea, shrimp pasta and fish fillet",sea:1,fam:1,
+  menu:"https://movenpick.accor.com/ar/middle-east/saudi-arabia/jeddah/resort-jeddah-al-nawras/restaurants/al-wadaa-restaurant.html",
+  map:"https://maps.app.goo.gl/HU56vuGVXpdDCBvQ7",tel:"+966126555550",
+  prices:[["البوفيه المفتوح","Open buffet","100-150"],["صدر دجاج مع أرز","Chicken breast with rice","59"],["تشيز كيك","Cheesecake","35"]],
+  pnote:"لا ينشر المنتجع قائمة رسمية على الإنترنت، والتفاصيل من تقارير زوّار.",
+  pnotee:"The resort does not publish an official menu online; these details come from visitor reports.",
+  note:"الإطلالة أقوى من الطعام حسب المراجعات، والمكان أشبه بسفينة على الماء.",
+  notee:"Reviews rate the view above the food, and the setting feels like a ship on the water."},
+
+ {ar:"أوبريشن سي فود",en:"Operation Seafood",c:"بحري",d:"شارع حلمي كتبي · الزهراء",de:"Helmi Kutbi Street, Al Zahra",lo:75,hi:120,rate:null,rc:"بلا تقييم موثّق",rce:"no verified rating",
+  dish:"تبسي العراب وديناميت جمبري والباييلا",dishe:"The Godfather tray, dynamite shrimp and paella",sea:0,fam:1,
+  menu:"https://www.jeddahcafe.com/2021/%D9%85%D8%B7%D8%B9%D9%85-%D8%A7%D9%88%D8%A8%D8%B1%D9%8A%D8%B4%D9%86-%D8%B3%D9%8A-%D9%81%D9%88%D8%AF/",
+  map:"https://www.google.com/maps/search/?api=1&query=Operation+Seafood+Jeddah",tel:"",
+  prices:[["تبسي العراب (٤ إلى ٦ أشخاص)","Godfather tray (serves 4 to 6)","200"],["باييلا","Paella","65"],["مكس سي فود","Seafood mix","52"],["ديناميت جمبري","Dynamite shrimp","36"]],
+  note:"أطباق كبيرة مبنية على المشاركة، وجلسات عائلية بستائر خصوصية.",
+  notee:"Large sharing platters, and family booths with privacy curtains."}
+];
+DATA.forEach((x,i)=>{x.r=i+1;});
+
+const CAFES=[
+ {ar:"لحظة كيف",en:"Cafe Moment",c:"حلويات",d:"أبحر الجنوبية · وفرع المارينا",de:"South Obhur, and a Marina branch",hours:"٢٤ ساعة",hourse:"24 hours",rate:4.7,rc:"٢٤٥٥١ مراجعة",rce:"24,551 reviews",
+  dish:"تيراميسو الشوكولاتة والقهوة السعودية مع التمر والبخور",dishe:"Chocolate tiramisu and Saudi coffee served with dates and bakhoor",sea:1,fam:1,
+  menu:"https://www.momo-cafe.com/menu-5",map:"https://www.google.com/maps/search/?api=1&query=Cafe+Moment+Obhur+Al+Janubiyah+Jeddah",tel:"+966550002160",
+  prices:[["فرنش توست","French toast","65"],["قهوة سعودية","Saudi coffee","55"],["حلى ترايو","Dessert trio","50"],["تيراميسو","Tiramisu","38"],["قهوة مقطرة V60","V60 pour over","25"],["كابتشينو","Cappuccino","20"]],
+  pnote:"الدور الأول في فرع نادي اليخوت مخصص لمن هم فوق ١٦ سنة، ويوجد حد أدنى للطلب.",
+  pnotee:"The first floor at the Yacht Club branch is for guests over 16, with a minimum order.",
+  note:"أعلى عدد مراجعات بين كافيهات جدة. فرع أبحر يعمل على مدار الساعة وفرع المارينا حتى الثالثة فجراً.",
+  notee:"The most reviewed cafe in Jeddah. The Obhur branch runs around the clock and the Marina branch until 3 AM."},
+
+ {ar:"كوب وكنبة",en:"Cup & Couch",c:"قهوة مختصة",d:"شارع اليمامة · السلامة",de:"Al Yamamah Street, As Salamah",hours:"حتى ٣ فجراً",hourse:"open till 3 AM",rate:4.7,rc:"١٢١٢٢ مراجعة",rce:"12,122 reviews",
+  dish:"خلطة ماما المحمّصة داخلياً وكيك الحليب بالفستق",dishe:"The house roasted Mama's Blend and pistachio milk cake",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/jeddah/al-muhammadiyah/103168",map:"https://www.google.com/maps/search/?api=1&query=Cup+%26+Couch+Cafe+and+Roastery+Al+Yamamah+As+Salamah+Jeddah",tel:"+966551199205",
+  prices:[["تشيزكيك نيويورك","New York cheesecake","34"],["كولد برو","Cold brew","29"],["كيك الحليب بالفستق","Pistachio milk cake","29"],["لاتيه","Latte","24"],["كابتشينو","Cappuccino","23"],["أمريكانو","Americano","19"]],
+  note:"محمصة داخلية وأجواء بيتية بكنب مريح وألعاب طاولة، والأنسب للجلسات الطويلة.",
+  notee:"An in house roastery with a living room feel, comfortable couches and board games, built for long sittings."},
+
+ {ar:"نوى باتيو",en:"Nawa Patio",c:"جلسات خارجية",d:"طريق الأمير سلطان · الخالدية",de:"Prince Sultan Road, Al Khalidiyah",hours:"حتى ٥ فجراً",hourse:"open till 5 AM",rate:4.6,rc:"٥٥٨٦ مراجعة",rce:"5,586 reviews",
+  dish:"معصوب بالعسل والقشطة وتيراميسو نوى",dishe:"Maasoub with honey and cream, and the Nawa tiramisu",sea:0,fam:1,
+  menu:"https://hungerstation.com/sa-en/restaurant/%D8%AC%D8%AF%D9%87/%D9%85%D9%8A%D9%86%D8%A7%D8%A1-%D8%AC%D8%AF%D8%A9-%D8%A7%D9%84%D8%A7%D8%B3%D9%84%D8%A7%D9%85%D9%8A/86894",
+  map:"https://www.google.com/maps/search/?api=1&query=Nawa+Patio+Prince+Sultan+Rd+Al+Khalidiyyah+Jeddah",tel:"+966541414908",
+  prices:[["بيتزا ترافل مشروم","Truffle mushroom pizza","85"],["تيراميسو نوى","Nawa tiramisu","62"],["معصوب بالعسل والقشطة","Maasoub with honey and cream","49"],["قهوة مقطرة V60","V60 pour over","28"],["كابتشينو","Cappuccino","27"]],
+  note:"الأطول فتحاً في القائمة. تراس مليء بالنباتات وإضاءة خافتة، والخيار الأول للسهر المتأخر.",
+  notee:"The latest closing on this list. A plant filled terrace with low lighting, and the first choice for a late night."},
+
+ {ar:"انج كافيه",en:"Eng Cafe",c:"قهوة مختصة",d:"بروميناد نادي اليخوت · الشاطئ",de:"Yacht Club Promenade, Ash Shati",hours:"٢٤ ساعة",hourse:"24 hours",rate:4.8,rc:"٤٦٤٢ مراجعة",rce:"4,642 reviews",
+  dish:"قهوة مختصة ومخبوزات طازجة وفطور على البحر",dishe:"Specialty coffee, fresh bakes and breakfast by the sea",sea:1,fam:1,
+  menu:"https://www.eng-cafe.com/menu",map:"https://www.google.com/maps/search/?api=1&query=Eng+Cafe+Jeddah+Yacht+Club+Promenade",tel:"+966566144252",
+  prices:[["فطورك المثالي","The perfect breakfast","94"],["بيتزا مارغريتا","Margherita pizza","53"],["قهوة سعودية","Saudi coffee","45"],["شكشوكة","Shakshuka","31"],["كرواسون بالجبن","Cheese croissant","19"]],
+  pnote:"الموقع الرسمي يذكر أن فرع الواجهة البحرية يعمل ٢٤ ساعة، ويُفضّل التأكيد هاتفياً قبل الزيارة المتأخرة.",
+  pnotee:"The official site lists the waterfront branch as open 24 hours; call ahead before a very late visit.",
+  note:"أعلى تقييم بين الكافيهات هنا، وجلسات خارجية مباشرة على الممشى واليخوت.",
+  notee:"The highest rating among these cafes, with outdoor seating right on the promenade beside the yachts."},
+
+ {ar:"كافيه أروما",en:"Caffe Aroma",c:"كافيه وأكل خفيف",d:"طريق الكورنيش الفرعي · الحمراء",de:"Corniche Branch Road, Al Hamra",hours:"حتى ٢ فجراً",hourse:"open till 2 AM",rate:4.3,rc:"١٥٤٣٢ مراجعة",rce:"15,432 reviews",
+  dish:"الدجاج المقلي الكوري وكيكة لندن والفطور طوال اليوم",dishe:"Korean fried chicken, London cake and all day breakfast",sea:0,fam:1,
+  menu:"https://caffearoma.com/menu?lang=ar",map:"https://www.google.com/maps/search/?api=1&query=Caffe+Aroma+Al+Kurnaysh+Br+Rd+Al+Hamra+Jeddah",tel:"920010163",
+  prices:[["جمبري اللافا","Lava shrimp","85"],["دجاج مقلي كوري","Korean fried chicken","69"],["أروما تندرز","Aroma tenders","55"],["كيكة لندن","London cake","42"],["بانكيك","Pancakes","38"]],
+  note:"جلسات خارجية بديكور أخضر كثيف وركن لمتابعة المباريات، ويمكن الحجز مسبقاً.",
+  notee:"Leafy outdoor seating and a corner for watching matches, with online booking available."},
+
+ {ar:"إيرث كافيه",en:"Urth Caffé",c:"كافيه وأكل خفيف",d:"لو بريستيج · الشاطئ",de:"Le Prestige, Ash Shati",hours:"حتى ٣ فجراً",hourse:"open till 3 AM",rate:4.3,rc:"٩٥٢٠ مراجعة",rce:"9,520 reviews",
+  dish:"القهوة العضوية والماتشا بوبا والتيراميسو",dishe:"Organic coffee, matcha boba and tiramisu",sea:0,fam:1,
+  menu:"https://www.urthcaffe.sa/",map:"https://www.google.com/maps/search/?api=1&query=Urth+Caffe+Le+Prestige+Ash+Shati+Jeddah",tel:"920007498",
+  prices:[["فرنش توست","French toast","66"],["بانكيك البترميلك","Buttermilk pancakes","63"],["تشيزكيك نيويورك","New York cheesecake","45"],["ماتشا لاتيه مثلج","Iced matcha latte","29"],["كابتشينو","Cappuccino","23"]],
+  pnote:"ساعات الإغلاق متضاربة بين المصادر، فالتأكيد الهاتفي أفضل في الليالي المتأخرة.",
+  pnotee:"Closing hours differ between sources, so call ahead for a very late visit.",
+  note:"فناء خارجي بشجرة زيتون كبيرة وديكور أخضر، ومن أشهر كافيهات العائلات في الشاطئ.",
+  notee:"An outdoor courtyard built around a large olive tree, and one of the best known family cafes in Ash Shati."},
+
+ {ar:"هيمي كافيه",en:"Hemi Cafe",c:"قهوة مختصة",d:"مجمع سيبا · طريق الأمير سلطان · الزهراء",de:"Siba Complex, Prince Sultan Road, Al Zahra",hours:"حتى ٣ فجراً",hourse:"open till 3 AM",rate:4.5,rc:"٢٤٥٣ مراجعة",rce:"2,453 reviews",
+  dish:"خلطات موسمية محمّصة في الموقع ومانجو تريس ليتشيز",dishe:"Seasonal blends roasted on site and mango tres leches",sea:0,fam:1,
+  menu:"https://linktr.ee/hemi.sa",map:"https://www.google.com/maps/search/?api=1&query=Hemi+cafe+%26+roastery+Prince+Sultan+Rd+Al+Zahra+Jeddah",tel:"+966552121165",
+  prices:[["آيس ماتشا لاتيه","Iced matcha latte","34"],["تشيزكيك مدريد","Madrid cheesecake","33"],["كولد برو","Cold brew","26"],["آيس لاتيه","Iced latte","21"],["إسبريسو","Espresso","16"]],
+  note:"هادئ ومناسب للدراسة والاجتماعات، وله فروع في الحمراء وأبحر الجنوبية والصواري.",
+  notee:"Quiet and suited to studying or meetings, with branches in Al Hamra, South Obhur and Al Sawari."},
+
+ {ar:"ثلث كافيه",en:"Thuluth Cafe",c:"حلويات",d:"طريق الأمير سلطان الفرعي · النهضة",de:"Prince Sultan Branch Road, An Nahdah",hours:"حتى منتصف الليل",hourse:"open till midnight",rate:4.2,rc:"٩٨٦٣ مراجعة",rce:"9,863 reviews",
+  dish:"كيكة التمر وبقلاوة تشيزكيك وتوفي ثلث",dishe:"Date cake, baklava cheesecake and the Thuluth toffee",sea:0,fam:1,
+  menu:"https://thuluthcafe.com/",map:"https://www.google.com/maps/search/?api=1&query=Thuluth+Cafe+Prince+Sultan+Branch+Rd+An+Nahdah+Jeddah",tel:"+966504486805",
+  prices:[["كلوب ساندويتش ثلث","Thuluth club sandwich","59"],["فرنش توست","French toast","57"],["قشدة ثلث","Thuluth qishda","49"],["آيس ماتشا","Iced matcha","36"],["كابتشينو","Cappuccino","25"],["قهوة سعودية","Saudi coffee","21"]],
+  pnote:"الموقع الرسمي يذكر الإغلاق منتصف الليل، ويمتد إلى الواحدة فجراً الخميس والجمعة.",
+  pnotee:"The official site lists midnight closing, extending to 1 AM on Thursday and Friday.",
+  note:"جلسات خارجية بمراجيح معلقة وتصميم عربي معاصر، ويوجد قواعد لباس وأقسام مقسّمة.",
+  notee:"Outdoor seating with hanging swings and a contemporary Arabian design, with a dress code and separate sections."},
+
+ {ar:"سيدهارتا لاونج",en:"Siddharta Lounge",c:"روف توب",d:"فندق أصيلة · شارع التحلية",de:"Assila Hotel, Tahlia Street",hours:"حتى ٢ فجراً",hourse:"open till 2 AM",rate:4.5,rc:"٥٠٧ مراجعات",rce:"507 reviews",
+  dish:"مطبخ متوسطي آسيوي وعرض سكاي لاين صن سِت",dishe:"Mediterranean Asian fusion and the Skyline Sunset set",sea:0,fam:0,
+  menu:"https://www.sevenrooms.com/reservations/siddhartaloungejedahjedla",map:"https://www.google.com/maps/search/?api=1&query=Siddharta+Lounge+Assila+Hotel+Jeddah",tel:"+966596322647",
+  prices:[["باقة سكاي لاين صن سِت","Skyline Sunset set","100"]],
+  pnote:"لا يُنشر منيو كامل بالأسعار على الإنترنت، والحجز عبر الرابط أعلاه.",
+  pnotee:"A full price list is not published online; booking is through the link above.",
+  note:"روف توب فندقي بمسبح وإطلالة بانورامية على أفق المدينة، وأجواء موسيقى حية. الأنسب للكبار وليس للأطفال.",
+  notee:"A hotel rooftop with a pool, a panoramic city skyline and live music. Suited to adults rather than children."},
+
+ {ar:"٩٥ سيلسيوس مارينا",en:"95 Celsius Marina",c:"قهوة مختصة",d:"ممشى المارينا · نادي جدة لليخوت",de:"Marina Walk, Jeddah Yacht Club",hours:"حتى ٢ فجراً",hourse:"open till 2 AM",rate:4.3,rc:"١٢٦١ مراجعة",rce:"1,261 reviews",
+  dish:"قهوة ٩٥ المميزة حارة ومثلجة والكولد برو",dishe:"The 95 signature coffee, hot or iced, and cold brew",sea:1,fam:1,
+  menu:"https://www.95celsius.com/products",map:"https://www.google.com/maps/search/?api=1&query=95+Celsius+Marina+Jeddah+Yacht+Club",tel:"+966561817361",
+  prices:[["تشيزكيك سان سباستيان","San Sebastian cheesecake","33"],["قهوة ٩٥ المميزة","95 signature coffee","29"],["كولد برو","Cold brew","28"],["كابتشينو","Cappuccino","19"],["إسبريسو","Espresso","16"]],
+  note:"جلسات خارجية على المارينا مباشرة أمام اليخوت، ومرافق مهيأة لذوي الاحتياجات.",
+  notee:"Outdoor seating on the marina facing the yachts, with accessible entry, seating and parking."},
+
+ {ar:"قود هود",en:"GOODHOOD",c:"كافيه وأكل خفيف",d:"شارع عبدالمقصود خوجة · الروضة",de:"Abdul Maqsood Khoja Street, Al Rawdah",hours:"حتى ٢:٣٠ فجراً",hourse:"open till 2:30 AM",rate:4.3,rc:"١٠٠٠ مراجعة",rce:"1,000 reviews",
+  dish:"الماتشا وبلونديز التفاح والقرفة والكوكيز",dishe:"Matcha, apple cinnamon blondies and cookies",sea:0,fam:1,
+  menu:"https://linktr.ee/goodhood.sa",map:"https://www.google.com/maps/search/?api=1&query=GOODHOOD+Abdul+Maqsud+Khojah+Ar+Rawdah+Jeddah",tel:"+966550835166",
+  prices:[["آيس ماتشا","Iced matcha","33"],["موهيتو كلاسيك","Classic mojito","30"],["آيس إسباني","Iced Spanish latte","28"],["لاتيه","Latte","22"],["كوكي كلاسيك","Classic cookie","12"]],
+  note:"ديكور ملوّن وألعاب طاولة وأجواء شبابية، ومن أفضل أماكن الماتشا في جدة.",
+  notee:"Colourful interiors, board games and a young crowd, and one of the best places in Jeddah for matcha."},
+
+ {ar:"كلتشر كافيه",en:"Culture Cafe",c:"كافيه وأكل خفيف",d:"طريق الكورنيش الفرعي · أمام نافورة الملك فهد",de:"Corniche Branch Road, facing King Fahd Fountain",hours:"حتى ٢ فجراً",hourse:"open till 2 AM",rate:4.1,rc:"٢١٧٩ مراجعة",rce:"2,179 reviews",
+  dish:"الفطور الحجازي والشكشوكة أمام النافورة",dishe:"Hijazi breakfast and shakshuka facing the fountain",sea:1,fam:1,
+  menu:"https://culturecafe.logix360.studio/en/",map:"https://www.google.com/maps/search/?api=1&query=Culture+Cafe+Al+Kurnaysh+Br+Rd+Al+Hamra+Jeddah",tel:"+966559411789",
+  prices:[["طبق كلتشر","The Culture plate","59"],["فطيرة حلومي بيستو","Halloumi pesto pastry","30"],["فرنش توست","French toast","30"],["حمص باللحم","Hummus with meat","26"],["شكشوكة تركية","Turkish shakshuka","24"]],
+  note:"إطلالة مباشرة على البحر ونافورة الملك فهد، والفطور متاح حتى ساعة متأخرة.",
+  notee:"A direct view of the sea and King Fahd Fountain, with breakfast served until late."}
+];
+CAFES.forEach((x,i)=>{x.r=i+1;});
+
+const LL={
+ "المراكبي":[21.557551,39.171497],"توينا":[21.574903,39.142742],"أوت باك ستيك هاوس":[21.593006,39.229335],
+ "كوت انتركوت دي جدة":[21.591895,39.133243],"أوشن باسكيت":[21.549789,39.148112],"ذا تشيزكيك فاكتوري":[21.553430,39.167485],
+ "تكساس رودهاوس":[21.553430,39.167485],"براسا دي برازيل":[21.519319,39.164576],"بلو أوشن":[21.572218,39.109369],
+ "بورتوفينو":[21.558454,39.145453],"خيال":[21.609582,39.141060],"بياتو":[21.575867,39.126920],"جواكا":[21.554145,39.143084],
+ "إيسابيلاز":[21.602459,39.133250],"بلاك تاب":[21.603543,39.142960],"شرمب أناتومي":[21.573295,39.139755],
+ "نينو":[21.522540,39.163303],"الصعيدي للأسماك":[21.517833,39.153781],"ليلى":[21.557319,39.150502],
+ "الدوار المصري":[21.529021,39.143666],"دار زيد":[21.567082,39.149604],"ميديم ويل":[21.573335,39.135051],
+ "سرايا لطيف":[21.519960,39.156772],"كرم بيروت":[21.570152,39.124644],"أبو السيد":[21.545703,39.154561],
+ "كنز أبحر":[21.731940,39.117397],"المرساة للمأكولات البحرية":[21.598000,39.220000],"كرمنا":[21.653021,39.100515],
+ "الودعة":[21.588260,39.105783],"أوبريشن سي فود":[21.591306,39.136613],
+ "لحظة كيف":[21.731014,39.117293],"كوب وكنبة":[21.596472,39.145225],"نوى باتيو":[21.553752,39.143096],
+ "انج كافيه":[21.647905,39.102146],"كافيه أروما":[21.516940,39.154237],"إيرث كافيه":[21.567112,39.124728],
+ "هيمي كافيه":[21.602609,39.142414],"ثلث كافيه":[21.631065,39.133615],"سيدهارتا لاونج":[21.551683,39.162442],
+ "٩٥ سيلسيوس مارينا":[21.642802,39.100649],"قود هود":[21.574335,39.148174],"كلتشر كافيه":[21.517637,39.153779]
+};
+const APPROX=new Set(["توينا","أوشن باسكيت","الودعة","المرساة للمأكولات البحرية","ميديم ويل"]);
+DATA.concat(CAFES).forEach(x=>{x.ll=LL[x.ar];x.approx=APPROX.has(x.ar);});
+
+const CE={"بحري":"Seafood","ستيك":"Steak","إيطالي":"Italian","عالمي":"International","شامي":"Levantine","تركي":"Turkish","برجر":"Burger","مصري":"Egyptian","مكسيكي":"Mexican","قهوة مختصة":"Specialty coffee","حلويات":"Desserts","جلسات خارجية":"Outdoor","روف توب":"Rooftop","كافيه وأكل خفيف":"Cafe and bites"};
+
+const T={
+ ar:{
+  title:"ثلاثون مطعماً في جدة مرتّبة من الأفضل",
+  lede:"الترتيب مبني على قوة التقييم وعدد المراجعات أولاً، ثم على قوة المطبخ وسمعته. القائمة تغطي البحري والإيطالي والستيك والبرجر والشامي والتركي والمصري والعالمي والمكسيكي.",
+  meta:["محدّث <b>أغسطس ٢٠٢٦</b>","<b>٣٠</b> مطعماً · <b>٩</b> أنواع مطابخ","المنيو والموقع والصور داخل كل بطاقة"],
+  cafeTitle:"اثنا عشر كافيه في جدة للسهر",
+  cafeLede:"كافيهات تفتح حتى ساعة متأخرة، بين القهوة المختصة والحلويات والجلسات الخارجية والروف توب. مرتّبة من الأفضل حسب التقييم وعدد المراجعات، مع ساعة الإغلاق لكل مكان.",
+  cafeMeta:["محدّث <b>أغسطس ٢٠٢٦</b>","<b>١٢</b> كافيه · <b>٥</b> فئات","ساعة الإغلاق مذكورة في كل بطاقة"],
+  secFood:"مطاعم",secCafe:"كافيهات السهر",
+  mapT:"خريطة المواقع",mapHint:"الخريطة مرسومة بإحداثيات فعلية موثّقة لكل مكان. النقاط المفرّغة مواقعها تقريبية على مستوى المجمع. اضغط أي نقطة لفتح الموقع على خرائط جوجل.",km:"كم",approxTag:"موقع تقريبي",
+  north:"شمال",sea2:"البحر الأحمر",
+  all:"الكل",sea:"إطلالة بحرية",fam:"مناسب للعائلة",sortLbl:"ترتيب",
+  sorts:[["curated","الأفضل أولاً"],["rating","أعلى تقييم"],["az","أبجدياً"]],
+  lang:"English",count:(a,b)=>`عرض ${a} من ${b} مطعماً`,countCafe:(a,b)=>`عرض ${a} من ${b} كافيه`,
+  empty:"لا يوجد مطعم يطابق الفلاتر المختارة. جرّب إلغاء أحد الشروط.",
+  menuT:"المنيو",
+  full:"القائمة الكاملة",loc:"الموقع",pics:"صور المطعم",call:"اتصال",
+  highlight:"الأبرز:",sar:"ريال",of5:"/ ٥",to:" إلى ",
+  tipsH:"ملاحظات قبل الحجز",
+  tips:["<b>كيف رُتّبت القائمة:</b> المراتب الأولى لمطاعم جمعت تقييماً عالياً مع عدد مراجعات كبير يعتد به. المراتب الأخيرة ليست ضعيفة بالضرورة، لكن تقييمها غير موثّق أو عدد مراجعاتها صغير.",
+   "<b>الحجز المسبق</b> مطلوب عملياً في كوت انتركوت وتكساس رودهاوس وبراسا دي برازيل، خصوصاً نهاية الأسبوع.",
+   "<b>الإطلالة البحرية</b> متوفرة في توينا وبلو أوشن والصعيدي وكنز أبحر وكرمنا والودعة، واستخدم فلتر الإطلالة البحرية لعرضها وحدها.",
+   "<b>للعائلات والأطفال</b>: أوشن باسكيت وأوت باك وبلاك تاب وشرمب أناتومي وليلى فيها منيو أطفال وجلسات عائلية مريحة.",
+   "<b>مطاعم السمك</b> (المراكبي، الصعيدي، المرساة) تختار فيها السمكة بالنوع والحجم عند الطلب، فاسأل عن صيد اليوم.",
+   "<b>الصور والموقع:</b> زر صور المطعم يفتح نتائج الصور، وزر الموقع يفتح الخرائط حيث صور الزوّار الحديثة."],
+  tipsHCafe:"ملاحظات عن السهر",
+  tipsCafe:["<b>الأطول فتحاً:</b> نوى باتيو حتى الخامسة فجراً، ثم لحظة كيف وانج كافيه اللذان يعملان على مدار الساعة في فرعي أبحر والمارينا.",
+   "<b>الإطلالة البحرية:</b> لحظة كيف وانج كافيه و٩٥ سيلسيوس وكلتشر كافيه كلها على الماء مباشرة، واستخدم فلتر الإطلالة البحرية لعرضها وحدها.",
+   "<b>ساعات العمل تتغيّر</b> في المواسم ورمضان، ويُفضّل التأكيد هاتفياً قبل الزيارة بعد منتصف الليل.",
+   "<b>ملاحظة عائلية:</b> سيدهارتا لاونج مكان للكبار، وبعض الكافيهات لها أقسام مقسّمة أو حد أدنى للطلب، وهذا مذكور في بطاقتها."],
+  foot:"المعلومات مأخوذة من منيوهات منشورة (هنقرستيشن، ذا شفز، المواقع الرسمية) وتقييمات تريب أدفايزر وخرائط جوجل بحالة أغسطس ٢٠٢٦، وهي قابلة للتغيّر. الرسومات في أعلى البطاقات توضيحية حسب نوع المطبخ وليست صوراً للمطاعم. يُنصح بتأكيد الدوام والحجز هاتفياً قبل الزيارة."
+ },
+ en:{
+  title:"Thirty Jeddah restaurants, ranked best first",
+  lede:"Ranking is driven by rating strength and review count first, then by the strength and reputation of the kitchen. The list covers seafood, Italian, steak, burgers, Levantine, Turkish, Egyptian, international and Mexican.",
+  meta:["Updated <b>August 2026</b>","<b>30</b> restaurants · <b>9</b> cuisines","Menu, location and photos inside every card"],
+  cafeTitle:"Twelve Jeddah cafes for the night",
+  cafeLede:"Cafes that stay open late, across specialty coffee, desserts, garden terraces and rooftops. Ranked best first by rating and review count, with the closing time on every card.",
+  cafeMeta:["Updated <b>August 2026</b>","<b>12</b> cafes · <b>5</b> categories","Closing time on every card"],
+  secFood:"Restaurants",secCafe:"Night cafes",
+  mapT:"Location map",mapHint:"Plotted from verified coordinates for each place. Hollow dots are approximate, pinned to the building or complex. Tap any dot to open it on Google Maps.",km:"km",approxTag:"approximate location",
+  north:"North",sea2:"Red Sea",
+  all:"All",sea:"Sea view",fam:"Family friendly",sortLbl:"Sort",
+  sorts:[["curated","Best first"],["rating","Top rated"],["az","A to Z"]],
+  lang:"عربي",count:(a,b)=>`Showing ${a} of ${b} restaurants`,countCafe:(a,b)=>`Showing ${a} of ${b} cafes`,
+  empty:"No restaurant matches these filters. Try clearing one of them.",
+  menuT:"Menu",
+  full:"Full menu",loc:"Location",pics:"Photos",call:"Call",
+  highlight:"Known for:",sar:"SAR",of5:"/ 5",to:" to ",
+  tipsH:"Notes before you book",
+  tips:["<b>How this is ranked:</b> the top places pair a high rating with a review count large enough to trust. The lower ranks are not necessarily weak, but their rating is unverified or based on very few reviews.",
+   "<b>Book ahead</b> at KoT, Texas Roadhouse and Brasa de Brazil, especially on weekends.",
+   "<b>Sea views</b> are at Twina, Blue Ocean, Saedi, Kanz Obhur, Karamna and Al Wadaa. Use the sea view filter to see them on their own.",
+   "<b>For families and children</b>, Ocean Basket, Outback, Black Tap, Shrimp Anatomy and Leila all have kids menus and comfortable family seating.",
+   "<b>At the fish restaurants</b> (Elmarakby, Saedi, Al Marsah) you pick the fish by type and size at the counter, so ask for the catch of the day.",
+   "<b>Photos and location:</b> the photos button opens image results, and the location button opens Maps where recent visitor photos live."],
+  tipsHCafe:"Notes for the night",
+  tipsCafe:["<b>Latest closing:</b> Nawa Patio runs until 5 AM, and Cafe Moment and Eng Cafe both run around the clock at their Obhur and Marina branches.",
+   "<b>On the water:</b> Cafe Moment, Eng Cafe, 95 Celsius and Culture Cafe all sit directly on the sea. Use the sea view filter to see them on their own.",
+   "<b>Opening hours shift</b> with the season and in Ramadan, so call ahead before a visit after midnight.",
+   "<b>Family note:</b> Siddharta Lounge is an adults venue, and a few cafes have separated sections or a minimum order, which is noted on their card."],
+  foot:"Details come from published menus (HungerStation, TheChefz, official sites) and from Tripadvisor and Google Maps ratings as of August 2026, and they change over time. The artwork at the top of each card is an illustration of the cuisine, not a photo of the restaurant. Confirm opening hours and bookings by phone before visiting."
+ }
+};
+
+const ART={
+ "بحري":{a:"#0E5C73",b:"#1C8C8A",art:`<path d="M0 88c27 0 27 9 54 9s27-9 54-9 27 9 54 9 27-9 54-9 27 9 54 9 27-9 54-9v34H0z" fill="#fff" opacity=".18"/><path d="M0 100c27 0 27 9 54 9s27-9 54-9 27 9 54 9 27-9 54-9 27 9 54 9 27-9 54-9v22H0z" fill="#fff" opacity=".14"/><path d="M112 48c18-16 46-16 62 0-16 16-44 16-62 0z" fill="#fff" opacity=".9"/><path d="M174 48l20-13v26z" fill="#fff" opacity=".9"/><circle cx="128" cy="44" r="3.2" fill="#0E5C73"/>`},
+ "إيطالي":{a:"#8A3B2E",b:"#C2703F",art:`<path d="M160 26l38 66h-76z" fill="#fff" opacity=".92"/><circle cx="152" cy="66" r="5" fill="#8A3B2E"/><circle cx="172" cy="74" r="4.4" fill="#8A3B2E"/><circle cx="160" cy="48" r="4" fill="#8A3B2E"/><path d="M40 96c30 0 30-14 60-14M40 106c40 0 40-18 80-18" stroke="#fff" stroke-width="4" fill="none" opacity=".35" stroke-linecap="round"/><path d="M240 96c30 0 30-14 60-14M220 106c40 0 40-18 80-18" stroke="#fff" stroke-width="4" fill="none" opacity=".35" stroke-linecap="round"/>`},
+ "ستيك":{a:"#6E2E22",b:"#B4542F",art:`<rect x="86" y="40" width="148" height="10" rx="5" fill="#fff" opacity=".85"/><rect x="86" y="60" width="148" height="10" rx="5" fill="#fff" opacity=".7"/><rect x="86" y="80" width="148" height="10" rx="5" fill="#fff" opacity=".55"/><path d="M160 12c10 12 4 18 0 24-6-4-14-10-4-24z" fill="#fff" opacity=".9"/><path d="M186 18c7 9 3 13 0 17-4-3-10-7-3-17z" fill="#fff" opacity=".55"/>`},
+ "برجر":{a:"#8A5A12",b:"#C9922C",art:`<path d="M104 52a56 26 0 01112 0z" fill="#fff" opacity=".92"/><rect x="102" y="56" width="116" height="12" rx="6" fill="#fff" opacity=".6"/><rect x="100" y="72" width="120" height="12" rx="4" fill="#fff" opacity=".85"/><path d="M104 90h112a10 10 0 01-10 10H114a10 10 0 01-10-10z" fill="#fff" opacity=".7"/><circle cx="140" cy="40" r="2.6" fill="#8A5A12"/><circle cx="160" cy="34" r="2.6" fill="#8A5A12"/><circle cx="180" cy="40" r="2.6" fill="#8A5A12"/>`},
+ "شامي":{a:"#1F5E4C",b:"#4E9370",art:`<circle cx="106" cy="66" r="24" fill="#fff" opacity=".85"/><circle cx="160" cy="66" r="30" fill="#fff" opacity=".92"/><circle cx="214" cy="66" r="24" fill="#fff" opacity=".85"/><circle cx="160" cy="66" r="12" fill="#1F5E4C" opacity=".55"/><rect x="60" y="100" width="200" height="5" rx="2.5" fill="#fff" opacity=".45"/>`},
+ "تركي":{a:"#7A2438",b:"#B85C5C",art:`<rect x="70" y="60" width="180" height="5" rx="2.5" fill="#fff" opacity=".55"/><rect x="92" y="44" width="34" height="38" rx="10" fill="#fff" opacity=".9"/><rect x="140" y="44" width="34" height="38" rx="10" fill="#fff" opacity=".8"/><rect x="188" y="44" width="34" height="38" rx="10" fill="#fff" opacity=".7"/><path d="M160 100c-8 0-14-5-14-11h28c0 6-6 11-14 11z" fill="#fff" opacity=".45"/>`},
+ "مصري":{a:"#2F4F72",b:"#6E93B8",art:`<path d="M124 82a36 36 0 0172 0z" fill="#fff" opacity=".9"/><rect x="118" y="82" width="84" height="10" rx="3" fill="#fff" opacity=".75"/><rect x="128" y="92" width="64" height="14" rx="4" fill="#fff" opacity=".55"/><path d="M160 34v14" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/><circle cx="160" cy="32" r="4" fill="#fff" opacity=".8"/><path d="M64 106h32M224 106h32" stroke="#fff" stroke-width="4" opacity=".35" stroke-linecap="round"/>`},
+ "عالمي":{a:"#2A4A56",b:"#5E8C93",art:`<path d="M108 84a52 40 0 01104 0z" fill="#fff" opacity=".9"/><rect x="96" y="84" width="128" height="9" rx="4.5" fill="#fff" opacity=".75"/><circle cx="160" cy="38" r="5" fill="#fff" opacity=".9"/><path d="M64 100h44M212 100h44" stroke="#fff" stroke-width="4" opacity=".35" stroke-linecap="round"/>`},
+ "قهوة مختصة":{a:"#4A3524",b:"#8A6A4A",art:`<path d="M110 44h84v26a34 34 0 01-34 34h-16a34 34 0 01-34-34z" fill="#fff" opacity=".92"/><path d="M194 52h14a16 16 0 010 32h-14z" fill="none" stroke="#fff" stroke-width="6" opacity=".8"/><rect x="96" y="106" width="112" height="8" rx="4" fill="#fff" opacity=".6"/><path d="M132 28c6-8 0-12 0-16M160 26c6-8 0-12 0-16M188 28c6-8 0-12 0-16" stroke="#fff" stroke-width="4" fill="none" opacity=".45" stroke-linecap="round"/>`},
+ "حلويات":{a:"#6E2A4A",b:"#B0567F",art:`<path d="M108 62h104v40H108z" fill="#fff" opacity=".9"/><path d="M104 62c0-14 25-22 56-22s56 8 56 22z" fill="#fff" opacity=".7"/><rect x="96" y="102" width="128" height="8" rx="4" fill="#fff" opacity=".55"/><circle cx="160" cy="30" r="6" fill="#fff" opacity=".9"/><path d="M130 50c10-6 20-6 30 0s20 6 30 0" stroke="#6E2A4A" stroke-width="4" fill="none" opacity=".45"/>`},
+ "جلسات خارجية":{a:"#25543A",b:"#5E9A63",art:`<rect x="150" y="60" width="12" height="46" rx="4" fill="#fff" opacity=".8"/><path d="M156 62c-30 0-52-16-52-30 30-8 44 4 52 14 8-10 22-22 52-14 0 14-22 30-52 30z" fill="#fff" opacity=".9"/><rect x="80" y="104" width="160" height="7" rx="3.5" fill="#fff" opacity=".5"/><circle cx="70" cy="40" r="12" fill="#fff" opacity=".25"/><circle cx="250" cy="52" r="9" fill="#fff" opacity=".22"/>`},
+ "روف توب":{a:"#243A63",b:"#5C74A8",art:`<rect x="86" y="52" width="26" height="54" fill="#fff" opacity=".75"/><rect x="122" y="34" width="30" height="72" fill="#fff" opacity=".9"/><rect x="162" y="62" width="24" height="44" fill="#fff" opacity=".7"/><rect x="196" y="44" width="30" height="62" fill="#fff" opacity=".82"/><circle cx="248" cy="34" r="12" fill="#fff" opacity=".55"/><rect x="70" y="106" width="180" height="7" rx="3.5" fill="#fff" opacity=".45"/>`},
+ "كافيه وأكل خفيف":{a:"#4A5A2A",b:"#8FA352",art:`<circle cx="160" cy="66" r="34" fill="#fff" opacity=".9"/><circle cx="160" cy="66" r="18" fill="#4A5A2A" opacity=".35"/><path d="M96 46v40M96 46c-8 6-8 16 0 20M224 46v40M224 52c8 6 8 16 0 20" stroke="#fff" stroke-width="5" fill="none" opacity=".6" stroke-linecap="round"/><rect x="86" y="104" width="148" height="7" rx="3.5" fill="#fff" opacity=".45"/>`},
+ "مكسيكي":{a:"#8A6510",b:"#C58A2E",art:`<path d="M104 92a56 46 0 01112 0z" fill="#fff" opacity=".92"/><path d="M118 92a42 34 0 0184 0z" fill="#8A6510" opacity=".45"/><circle cx="140" cy="76" r="4" fill="#fff" opacity=".8"/><circle cx="162" cy="68" r="4" fill="#fff" opacity=".8"/><circle cx="182" cy="78" r="4" fill="#fff" opacity=".8"/><rect x="56" y="52" width="12" height="52" rx="6" fill="#fff" opacity=".4"/><rect x="40" y="66" width="12" height="24" rx="6" fill="#fff" opacity=".4"/><rect x="72" y="60" width="12" height="30" rx="6" fill="#fff" opacity=".4"/>`}
+};
+
+const $=id=>document.getElementById(id);
+const state={section:'food',cuisine:null,sea:false,fam:false,sort:'curated',lang:'en'};
+const AR=n=>String(n).replace(/[0-9]/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const L=()=>T[state.lang];
+const num=v=>state.lang==='ar'?AR(v):String(v);
+const money=v=>String(v).includes('-')?num(String(v).split('-')[0])+L().to+num(String(v).split('-')[1]):num(v);
+
+const waveIcon='<svg viewBox="0 0 24 24"><path d="M2 15c2 0 2 1.5 4 1.5S8 15 10 15s2 1.5 4 1.5S16 15 18 15s2 1.5 4 1.5V19c-2 0-2-1.5-4-1.5S16 19 14 19s-2-1.5-4-1.5S8 19 6 19s-2-1.5-4-1.5z"/></svg>';
+const famIcon='<svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-8 9c0-3.9 3.6-6.5 8-6.5s8 2.6 8 6.5z"/></svg>';
+const menuIcon='<svg viewBox="0 0 24 24"><path d="M5 3h11a3 3 0 013 3v15H8a3 3 0 01-3-3zm3 4v2h9V7zm0 4v2h9v-2zm0 4v2h6v-2z"/></svg>';
+const pinIcon='<svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>';
+const telIcon='<svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.5.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11 11 0 00.56 3.5 1 1 0 01-.25 1z"/></svg>';
+const picIcon='<svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm2 11h12l-4-5-3 3.5L9 13z"/><circle cx="8.5" cy="9" r="1.6"/></svg>';
+
+function card(x){
+  const t=L(),ar=state.lang==='ar';
+  const el=document.createElement('article');
+  el.className='card'+(x.sea?' sea':'');
+  const a=ART[x.c]||ART["عالمي"];
+  const gid='g'+x.r;
+  const rows=x.prices.map(p=>
+    `<li><span>${ar?p[0]:p[1]}</span><span class="lead"></span><span class="p">${money(p[2])}<i>${t.sar}</i></span></li>`).join('');
+  const pn=ar?x.pnote:x.pnotee;
+  const pics='https://www.google.com/search?tbm=isch&q='+encodeURIComponent((ar?x.ar:x.en)+' restaurant Jeddah');
+  el.innerHTML=`
+    <div class="art">
+      <svg viewBox="0 0 320 118" preserveAspectRatio="none" role="img" aria-label="${ar?'رسم توضيحي':'illustration'}">
+        <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="${a.a}"/><stop offset="1" stop-color="${a.b}"/></linearGradient></defs>
+        <rect width="320" height="118" fill="url(#${gid})"/>
+        <circle cx="${34+((x.r*37)%250)}" cy="${18+((x.r*13)%14)}" r="${9+(x.r%4)*2}" fill="#fff" opacity=".13"/>
+        ${a.art}
+        ${x.sea?'<path d="M0 104c27 0 27 8 54 8s27-8 54-8 27 8 54 8 27-8 54-8 27 8 54 8 27-8 54-8v14H0z" fill="#fff" opacity=".22"/>':''}
+      </svg>
+      <span class="rank">${num(x.r)}</span>
+      <span class="kind">${ar?x.c:CE[x.c]}</span>
+    </div>
+    <div class="card-body">
+      <div>
+        <h3 class="name">${ar?x.ar:x.en}<span class="alt">${ar?x.en:x.ar}</span></h3>
+        <p class="tagline">${ar?x.d:x.de}</p>
+      </div>
+      <p class="dish"><b>${t.highlight}</b> ${ar?x.dish:x.dishe}</p>
+      <details class="menu-box">
+        <summary>${menuIcon} ${t.menuT} <span class="caret">▾</span></summary>
+        <div class="menu-inner">
+          <ul class="menu-list">${rows}</ul>
+          ${pn?`<p class="menu-none">${pn}</p>`:''}
+          <a class="btn primary" style="align-self:flex-start" href="${x.menu}" target="_blank" rel="noopener">${menuIcon} ${t.full}</a>
+        </div>
+      </details>
+      <div class="actions">
+        <a class="btn map" href="${x.map}" target="_blank" rel="noopener">${pinIcon} ${t.loc}</a>
+        <a class="btn pics" href="${pics}" target="_blank" rel="noopener">${picIcon} ${t.pics}</a>
+        ${x.tel?`<a class="btn" href="tel:${x.tel}">${telIcon} ${t.call}</a>`:''}
+      </div>
+      <p class="note">${ar?x.note:x.notee}</p>
+      <div class="foot">
+        ${x.hours?`<span class="badge b-hours">${clockIcon} ${ar?x.hours:x.hourse}</span>`:''}
+        ${x.sea?`<span class="badge b-sea">${waveIcon} ${t.sea}</span>`:''}
+        ${x.fam?`<span class="badge b-fam">${famIcon} ${t.fam}</span>`:''}
+        <span class="rating">${x.rate?`<b>${num(x.rate.toFixed(1))}</b> ${t.of5} · ${ar?x.rc:x.rce}`:(ar?x.rc:x.rce)}</span>
+      </div>
+    </div>`;
+  return el;
+}
+
+const clockIcon='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10V6h-2v8h6v-2z"/></svg>';
+
+const ACT=()=>state.section==='cafe'?CAFES:DATA;
+
+function buildChrome(){
+  const t=L(),cafe=state.section==='cafe';
+  document.body.classList.toggle('ar',state.lang==='ar');
+  document.body.setAttribute('lang',state.lang);
+  $('h1').textContent=cafe?t.cafeTitle:t.title;
+  $('lede').textContent=cafe?t.cafeLede:t.lede;
+  $('meta').innerHTML=(cafe?t.cafeMeta:t.meta).map(m=>`<span>${m}</span>`).join('');
+  $('togSea').innerHTML=waveIcon+' '+t.sea;
+  $('togFam').innerHTML=famIcon+' '+t.fam;
+  $('sortLbl').textContent=t.sortLbl;
+  $('langBtn').textContent=t.lang;
+  $('empty').textContent=t.empty;
+  $('mapT').textContent=t.mapT;
+  $('mapHint').textContent=t.mapHint;
+  $('tipsH').textContent=cafe?t.tipsHCafe:t.tipsH;
+  $('tipsList').innerHTML=(cafe?t.tipsCafe:t.tips).map(x=>`<li>${x}</li>`).join('');
+  $('footText').textContent=t.foot;
+  const sel=$('sortSel');
+  sel.innerHTML=t.sorts.map(x=>`<option value="${x[0]}"${x[0]===state.sort?' selected':''}>${x[1]}</option>`).join('');
+
+  const secBox=$('sections');secBox.innerHTML='';
+  [['food',t.secFood],['cafe',t.secCafe]].forEach(([k,label])=>{
+    const b=document.createElement('button');
+    b.className='sec';b.type='button';b.textContent=label;
+    b.setAttribute('aria-pressed',state.section===k);
+    b.addEventListener('click',()=>{
+      if(state.section===k) return;
+      state.section=k;state.cuisine=null;state.sort='curated';
+      buildChrome();render();
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+    secBox.appendChild(b);
+  });
+
+  const box=$('cuisineChips');box.innerHTML='';
+  const data=ACT();
+  const list=[null,...[...new Set(data.map(x=>x.c))]];
+  list.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='chip';b.type='button';
+    b.setAttribute('aria-pressed',c===state.cuisine);
+    const label=c===null?t.all:(state.lang==='ar'?c:CE[c]);
+    const n=c===null?data.length:data.filter(x=>x.c===c).length;
+    b.innerHTML=label+'<span class="n">'+num(n)+'</span>';
+    b.addEventListener('click',()=>{
+      state.cuisine=c;
+      [...box.children].forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      render();
+    });
+    box.appendChild(b);
+  });
+  $('togSea').setAttribute('aria-pressed',state.sea);
+  $('togFam').setAttribute('aria-pressed',state.fam);
+}
+
+const MAP={n:21.755,s:21.495,w:39.072,e:39.242,W:520,H:760};
+const KLAT=Math.cos(21.62*Math.PI/180);
+function mx(lng){return (lng-MAP.w)/(MAP.e-MAP.w)*MAP.W;}
+function my(lat){return (MAP.n-lat)/(MAP.n-MAP.s)*MAP.H;}
+
+const COAST=[[21.755,39.083],[21.741,39.081],[21.734,39.090],[21.733,39.106],[21.729,39.122],[21.726,39.130],
+ [21.723,39.124],[21.722,39.107],[21.718,39.093],[21.706,39.083],[21.688,39.080],[21.668,39.084],[21.648,39.092],
+ [21.630,39.095],[21.612,39.098],[21.596,39.100],[21.580,39.103],[21.566,39.108],[21.552,39.116],[21.540,39.128],
+ [21.530,39.139],[21.520,39.149],[21.508,39.158],[21.495,39.164]];
+const DISTRICTS=[[21.700,39.120,'أبحر','Obhur'],[21.648,39.128,'الشراع','Al Shera'],[21.612,39.170,'السلامة','As Salamah'],
+ [21.632,39.200,'النهضة','An Nahdah'],[21.596,39.220,'المروة','Al Marwah'],[21.575,39.160,'الروضة','Al Rawdah'],
+ [21.590,39.128,'الشاطئ','Ash Shati'],[21.548,39.176,'الأندلس','Al Andalus'],[21.522,39.180,'الحمراء','Al Hamra'],
+ [21.556,39.132,'الخالدية','Al Khalidiyah']];
+
+function renderMap(list){
+  const t=L(),cafe=state.section==='cafe';
+  const color=cafe?'var(--saffron)':'var(--accent)';
+  const path=COAST.map((c,i)=>(i?'L ':'M ')+mx(c[1]).toFixed(1)+' '+my(c[0]).toFixed(1)).join(' ');
+  const kmPerDegLat=110.57, kmPerPxY=(MAP.n-MAP.s)*kmPerDegLat/MAP.H;
+  const barPx=(5/kmPerPxY).toFixed(1);
+  const used={};
+  const pins=list.filter(x=>x.ll).map(x=>{
+    let px=mx(x.ll[1]),py=my(x.ll[0]);
+    const key=Math.round(px/20)+'_'+Math.round(py/20);
+    const k=used[key]=(used[key]||0)+1;
+    if(k>1){const ang=(k-1)*2.1,rad=12*Math.ceil((k-1)/6);px+=Math.cos(ang)*rad;py+=Math.sin(ang)*rad;}
+    const X=px.toFixed(1),Y=py.toFixed(1);
+    const nm=(state.lang==='ar'?x.ar:x.en).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return `<a class="pin" href="${x.map}" target="_blank" rel="noopener"><title>${num(x.r)}. ${nm}${x.approx?' ('+t.approxTag+')':''}</title>`+
+      `<circle cx="${X}" cy="${Y}" r="10" fill="${color}" opacity="${x.approx?'.55':'.95'}"/>`+
+      `<circle cx="${X}" cy="${Y}" r="10" fill="none" stroke="var(--surface)" stroke-width="1.8"${x.approx?' stroke-dasharray="3 2"':''}/>`+
+      `<text class="map-num" x="${X}" y="${Y}" text-anchor="middle" dominant-baseline="central">${num(x.r)}</text></a>`;
+  }).join('');
+  $('mapHost').innerHTML=`
+  <svg viewBox="0 0 ${MAP.W} ${MAP.H}" role="img" aria-label="${t.mapT}">
+    <rect width="${MAP.W}" height="${MAP.H}" fill="var(--surface-2)"/>
+    <path d="${path} L 0 ${MAP.H} L 0 0 Z" fill="var(--sea-soft)"/>
+    <path d="${path}" fill="none" stroke="var(--sea)" stroke-width="1.8" opacity=".75"/>
+    ${DISTRICTS.map(d=>`<text class="map-label" text-anchor="middle" x="${mx(d[1]).toFixed(1)}" y="${my(d[0]).toFixed(1)}">${state.lang==='ar'?d[2]:d[3]}</text>`).join('')}
+    <text class="map-label" text-anchor="end" x="${MAP.W-14}" y="24">${t.north} ↑</text>
+    <text class="map-label" text-anchor="start" x="16" y="${MAP.H-40}">${t.sea2}</text>
+    <g opacity=".85">
+      <line x1="${MAP.W-16-barPx}" y1="${MAP.H-22}" x2="${MAP.W-16}" y2="${MAP.H-22}" stroke="var(--ink-3)" stroke-width="2"/>
+      <line x1="${MAP.W-16-barPx}" y1="${MAP.H-27}" x2="${MAP.W-16-barPx}" y2="${MAP.H-17}" stroke="var(--ink-3)" stroke-width="2"/>
+      <line x1="${MAP.W-16}" y1="${MAP.H-27}" x2="${MAP.W-16}" y2="${MAP.H-17}" stroke="var(--ink-3)" stroke-width="2"/>
+      <text class="map-label" text-anchor="middle" x="${MAP.W-16-barPx/2}" y="${MAP.H-32}">${num(5)} ${t.km}</text>
+    </g>
+    ${pins}
+  </svg>`;
+}
+
+function render(){
+  const t=L();
+  let list=ACT().filter(x=>
+    (state.cuisine===null||x.c===state.cuisine) &&
+    (!state.sea||x.sea) && (!state.fam||x.fam));
+  if(state.sort==='rating') list=[...list].sort((a,b)=>(b.rate||0)-(a.rate||0));
+  if(state.sort==='az') list=[...list].sort((a,b)=>(state.lang==='ar'?a.ar.localeCompare(b.ar,'ar'):a.en.localeCompare(b.en,'en')));
+  const grid=$('grid');grid.innerHTML='';
+  list.forEach(x=>grid.appendChild(card(x)));
+  $('count').textContent=(state.section==='cafe'?t.countCafe:t.count)(num(list.length),num(ACT().length));
+  $('empty').hidden=list.length>0;
+  renderMap(list);
+}
+
+$('togSea').addEventListener('click',()=>{state.sea=!state.sea;$('togSea').setAttribute('aria-pressed',state.sea);render();});
+$('togFam').addEventListener('click',()=>{state.fam=!state.fam;$('togFam').setAttribute('aria-pressed',state.fam);render();});
+$('sortSel').addEventListener('change',e=>{state.sort=e.target.value;render();});
+$('langBtn').addEventListener('click',()=>{
+  state.lang=state.lang==='ar'?'en':'ar';
+  document.title=state.lang==='ar'?'ثلاثون مطعماً في جدة':'Thirty Jeddah Restaurants';
+  buildChrome();render();
+});
+
+buildChrome();render();
+</script>
+
+</body>
+</html>
